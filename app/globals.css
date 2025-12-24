@@ -1,0 +1,61 @@
+/* Tailwind v3 directives */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* =========================
+   CSS VARIABLES (GLOBAL)
+   ========================= */
+:root {
+  --color-neon-cyan: #00ffff;
+  --color-neon-magenta: #ff00ff;
+  --color-electric-blue: #0066ff;
+  --color-deep-purple: #1a0033;
+  --color-dark-bg: #0a0015;
+  --color-code-green: #00ff88;
+  --color-warning-orange: #ff6600;
+}
+
+/* =========================
+   BASE STYLES 
+   ========================= */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: "JetBrains Mono", monospace;
+  background-color: var(--color-dark-bg);
+  color: #ffffff;
+  overflow-x: hidden;
+}
+
+/* =========================
+   CUSTOM UTILITIES
+   ========================= */
+.text-gradient {
+  background: linear-gradient(
+    135deg,
+    var(--color-neon-cyan),
+    var(--color-neon-magenta),
+    var(--color-electric-blue)
+  );
+  background-clip: text;
+  -webkit-background-clip: text; /* Chrome, Safari */
+  color: transparent;
+  -webkit-text-fill-color: transparent; /* Chrome, Safari */
+}
+
+.glow-cyan {
+  box-shadow: 0 0 20px rgba(0, 255, 255, 0.5);
+}
+
+.glow-magenta {
+  box-shadow: 0 0 20px rgba(255, 0, 255, 0.5);
+}
