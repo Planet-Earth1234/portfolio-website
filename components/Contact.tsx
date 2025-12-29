@@ -32,6 +32,7 @@ const contacts = [
     label: 'Portfolio',
     value: 'profile-website-murex.vercel.app',
     link: 'https://profile-website-murex.vercel.app'
+    
   }
 ]
 

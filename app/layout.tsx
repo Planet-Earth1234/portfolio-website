@@ -1,58 +1,41 @@
-import type { Metadata } from "next";
-import "./globals.css";
+import type { Metadata } from 'next'
+import { JetBrains_Mono } from 'next/font/google'
+import './globals.css'
 
-import { Orbitron, Space_Mono, JetBrains_Mono } from "next/font/google";
-
-const orbitron = Orbitron({
-  subsets: ["latin"],
-  weight: ["700", "900"],
-  variable: "--font-orbitron",
-});
-
-const spaceMono = Space_Mono({
-  subsets: ["latin"],
-  weight: ["400", "700"],
-  variable: "--font-space",
-});
-
-const jetbrains = JetBrains_Mono({
-  subsets: ["latin"],
-  weight: ["400", "600"],
-  variable: "--font-jetbrains",
-});
+const jetbrainsMono = JetBrains_Mono({
+  subsets: ['latin'],
+  variable: '--font-jetbrains-mono',
+  display: 'swap',
+})
 
 export const metadata: Metadata = {
-  title: "Rahul Gupta | AI Systems Engineer",
-  description:
-    "AI Systems Engineer specializing in production-ready agentic AI systems, autonomous LLM agents, computer vision pipelines, and full-stack AI applications. Graduating May 2025.",
-  keywords: [
-    "AI Engineer",
-    "Machine Learning",
-    "LLM",
-    "Computer Vision",
-    "Autonomous Agents",
-    "Full Stack AI",
-  ],
-  authors: [{ name: "Rahul Gupta" }],
+  title: 'Rahul Gupta | AI/ML Engineer & Full-Stack Developer',
+  description: 'AI/ML architect specializing in computer vision, NLP, and production systems. Turning research into products that scale.',
+  keywords: ['AI', 'Machine Learning', 'Full-Stack', 'Computer Vision', 'NLP', 'Deep Learning', 'React', 'Django'],
+  authors: [{ name: 'Rahul Gupta' }],
   openGraph: {
-    title: "Rahul Gupta | AI Systems Engineer",
-    description: "Building autonomous LLM agents and production-ready AI systems",
-    type: "website",
+    title: 'Rahul Gupta | AI/ML Engineer & Full-Stack Developer',
+    description: 'Turning AI research into products that scale to millions',
+    type: 'website',
+    locale: 'en_US',
   },
-};
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Rahul Gupta | AI/ML Engineer & Full-Stack Developer',
+    description: 'Turning AI research into products that scale to millions',
+  },
+}
 
 export default function RootLayout({
   children,
 }: {
-  children: React.ReactNode;
+  children: React.ReactNode
 }) {
   return (
-    <html lang="en">
-      <body
-        className={`${orbitron.variable} ${spaceMono.variable} ${jetbrains.variable}`}
-      >
+    <html lang="en" className={jetbrainsMono.variable}>
+      <body className="font-mono">
         {children}
       </body>
     </html>
-  );
+  )
 }

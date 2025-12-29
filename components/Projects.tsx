@@ -1,238 +1,299 @@
 'use client'
 
 import { motion } from 'framer-motion'
+import { useInView } from 'react-intersection-observer'
+import { useState } from 'react'
 
 const projects = [
   {
-    title: 'Autonomous Job Search Agent',
-    tech: ['Flask', 'LLM Agents', 'Chrome Extension', 'Multi-Agent Orchestration'],
-    status: '🔴 LIVE BACKEND',
-    statusColor: '#ff6600',
-    description: 'End-to-end autonomous agent system revolutionizing job applications through intelligent automation',
-    highlights: [
-      'Architected multi-agent system with Chrome extension for automatic job scraping and semantic ranking using LLM-based relevance matching',
-      'Built production Flask backend with modular Python architecture, async task handling, comprehensive logging, and error recovery mechanisms',
-      'Implemented tool-calling pipelines for resume-JD alignment, <strong>reducing manual application time by 85%</strong> (12 hrs → 2 hrs/week)',
-      'Currently in final testing phase with backend deployed — Private repo available for demonstration'
+    id: 1,
+    title: "AI Math Tutor",
+    tagline: "Autonomous AI Agent That Teaches Math",
+    status: "🟢 Production • 1000+ Users",
+    problem: "Students need instant help with math homework, but traditional OCR solutions can't understand context or provide step-by-step reasoning.",
+    solution: [
+      "Built multi-stage pipeline: YOLO detection → Advanced OCR → LLM reasoning",
+      "Designed agent framework that breaks down complex problems",
+      "Created intuitive interface for image upload and solution viewing",
+      "Deployed scalable API handling 100+ concurrent requests"
     ],
-    github: 'https://github.com/Planet-Earth1234',
-    borderSide: 'left'
+    techStack: ["YOLO v8", "PyTesseract", "GPT-4", "FastAPI", "Docker"],
+    challenges: [
+      "Handwriting recognition accuracy (achieved 94%)",
+      "Multi-problem detection in single image",
+      "Response time optimization (< 3 seconds end-to-end)"
+    ],
+    results: [
+      "94% accuracy on diverse handwriting styles",
+      "< 3 second response time",
+      "1000+ problems solved",
+      "4.8/5 user satisfaction rating"
+    ],
+    github: "https://github.com/Planet-Earth1234/Ai_math_tutor",
+    featured: true
   },
   {
-    title: 'Overleaf Clone with AI Agents',
-    tech: ['Streamlit', 'Ollama', 'Docker', 'DeepSeek-Coder'],
-    status: '🔴 PRODUCTION READY',
-    statusColor: '#ff6600',
-    description: 'AI-powered LaTeX editor with autonomous agents for intelligent document generation',
-    highlights: [
-      'Developed intelligent LaTeX editor with autonomous agents for code generation, automated section creation, and real-time error fixing',
-      'Integrated Ollama + DeepSeek-Coder for context-aware editing, enabling <strong>70% faster workflow</strong> for technical documents through natural language',
-      'Containerized TeXLive environment with Docker for reproducible, dependency-free builds with real-time PDF preview',
-      'Implemented project management system with version control and collaborative features'
+    id: 2,
+    title: "Image Matching Research",
+    tagline: "Pushing Computer Vision Boundaries With SOTA Models",
+    status: "🔵 Kaggle Researcher",
+    problem: "Traditional feature matching fails with challenging conditions—lighting changes, viewpoint shifts, occlusions. Can we build a robust system using self-supervised learning?",
+    solution: [
+      "Implemented cutting-edge models: DINO, SuperGlue, LightGlue",
+      "Designed novel ensemble architecture combining strengths of each",
+      "Built comprehensive evaluation pipeline with multiple metrics",
+      "Achieved benchmark-beating results on real-world datasets"
     ],
-    borderSide: 'right'
+    techStack: ["DINO", "SuperGlue", "LightGlue", "PyTorch", "OpenCV"],
+    challenges: [
+      "Self-supervised feature extraction with DINO",
+      "Correspondence learning with SuperGlue",
+      "Efficient matching with LightGlue",
+      "Custom clustering algorithm for grouping matches"
+    ],
+    results: [
+      "Novel approach to unsupervised clustering",
+      "3x faster inference than baseline",
+      "Comprehensive benchmarking methodology"
+    ],
+    github: "https://github.com/Planet-Earth1234/Image-matching-challenge",
+    featured: true
   },
   {
-    title: 'Indian Food Classification System',
-    tech: ['EfficientNet', 'YOLOv8', 'Docker', 'REST API'],
-    status: '📝 PUBLISHED RESEARCH',
-    statusColor: '#00ff88',
-    description: 'Production-grade computer vision system for multi-class Indian cuisine recognition',
-    highlights: [
-      'Built 206-class classifier using EfficientNet achieving <strong>89% accuracy</strong>, integrated with YOLOv8 for multi-food detection in single images',
-      'Containerized entire ML pipeline with Docker for scalable deployment with <strong>&lt;200ms latency</strong> RESTful API endpoints',
-      'Published comprehensive research in IRJIET journal documenting architecture, training methodology, and deployment strategy',
-      'Implemented real-time inference optimization for production environments'
-    ],
-    github: 'https://github.com/Planet-Earth1234',
-    borderSide: 'left'
-  },
-  {
-    title: 'Advanced NLP Fine-Tuning',
-    tech: ['LoRA/QLoRA', 'BERT', 'mBART', 'Neural Translation'],
-    status: '',
-    statusColor: '',
-    description: 'Parameter-efficient fine-tuning for English-Sanskrit neural machine translation',
-    highlights: [
-      'Fine-tuned BERT and mBART models using LoRA/QLoRA techniques for low-resource language translation',
-      'Achieved <strong>60% reduction in training time</strong> while maintaining translation quality through parameter-efficient methods',
-      'Implemented custom tokenization strategies for Sanskrit language processing'
-    ],
-    borderSide: 'right'
-  },
-  {
-    title: 'ECHO TWEET – Bird Call Classifier',
-    tech: ['PyTorch', 'Librosa', 'Audio Processing', 'Spectrograms'],
-    status: '📝 PUBLISHED RESEARCH',
-    statusColor: '#00ff88',
-    description: 'Deep learning audio classifier for bird species identification from vocalizations',
-    highlights: [
-      'Developed audio classification model using Librosa for feature extraction and spectrogram analysis',
-      'Published research in IRJIET (April 2024) documenting methodology and results',
-      'Implemented real-time audio processing pipeline for species identification'
-    ],
-    borderSide: 'left'
-  }
+  id: 3,
+  title: "LaTeX Studio",
+  tagline: "AI-Native Document Engineering Environment",
+  status: "🟢 Production • Groq-Optimized • RAG Integrated",
+  problem: "Traditional LaTeX editors (like Overleaf) treat AI as a plugin. For complex scientific documents, high-latency compilation and 'blank page' syndrome remain significant barriers for researchers.",
+  solution: [
+    "Built a Next.js/FastAPI environment optimized for zero-latency LLM streaming via Groq LPU",
+    "Developed a RAG pipeline using Sentence Transformers to retrieve context-aware TeX snippets and package documentation",
+    "Engineered a modular Docker environment for TeX Live to eliminate local dependency conflicts",
+    "Implemented a Python-based backend for asynchronous compilation and error-correction loops"
+  ],
+  techStack: ["Next.js", "FastAPI", "Groq (Llama-3)", "Sentence Transformers", "Docker", "PostgreSQL"],
+  challenges: [
+    "Optimizing RAG retrieval for semantic LaTeX syntax vs. plain text",
+    "Managing the memory footprint of TeX Live within a containerized architecture",
+    "Achieving sub-second 'Type-to-Render' feedback loops using Groq LPUs",
+    "Handling complex cross-referencing and bibliography compilation in a virtualized environment"
+  ],
+  results: [
+    "90% reduction in 'Cold Start' document creation time via AI-assisted templating",
+    "Sub-200ms LLM inference speed using Groq-native Llama-3-70B",
+    "Fully portable Docker deployment (hosted on Docker Hub) for seamless system replication",
+    "Zero-configuration LaTeX environment for cross-platform research collaboration"
+  ],
+  docker_Backend:  "https://hub.docker.com/r/rahulgupta190310/latex-studio-backend",
+  docker_Frontend: "https://hub.docker.com/r/rahulgupta190310/latex-studio-frontend"
+,
+  "featured": true
+}
 ]
-
-const container = {
-  hidden: { opacity: 0 },
-  show: {
-    opacity: 1,
-    transition: {
-      staggerChildren: 0.2
-    }
-  }
-}
-
-const item = {
-  hidden: { opacity: 0, x: -30 },
-  show: { opacity: 1, x: 0 }
-}
-
 export default function Projects() {
+  const [ref, inView] = useInView({
+    triggerOnce: true,
+    threshold: 0.1,
+  })
+  
+  const [expandedProject, setExpandedProject] = useState<number | null>(null)
+
   return (
-    <section id="projects" className="py-24 px-5 relative">
-      <div className="max-w-7xl mx-auto">
+    <section id="projects" ref={ref} className="py-32 relative">
+      <div className="container mx-auto px-6">
         <motion.div
-          initial={{ opacity: 0, x: -30 }}
-          whileInView={{ opacity: 1, x: 0 }}
-          viewport={{ once: true }}
+          initial={{ opacity: 0, y: 30 }}
+          animate={inView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.6 }}
+          className="text-center mb-16"
         >
-          <h2 
-            className="text-4xl sm:text-5xl md:text-6xl font-black uppercase tracking-wider mb-16 relative inline-block"
-            style={{
-              fontFamily: 'var(--font-orbitron)',
-              color: 'var(--color-neon-cyan)'
-            }}
-          >
-            FLAGSHIP PROJECTS
-            <span 
-              className="absolute bottom-[-10px] left-0 w-full h-1 bg-gradient-to-r from-[#00ffff] to-transparent"
-              style={{ animation: 'lineGrow 1s ease-out' }}
-            />
+          <h2 className="text-4xl md:text-5xl font-bold mb-4">
+            <span className="text-gradient">Featured Projects</span>
           </h2>
+          <p className="text-gray-400 text-lg max-w-2xl mx-auto">
+            Deep dives into real-world problems and the systems I built to solve them
+          </p>
         </motion.div>
 
-        <motion.div
-          variants={container}
-          initial="hidden"
-          whileInView="show"
-          viewport={{ once: true }}
-          className="space-y-16 mt-10"
-        >
-          {projects.map((project, index) => (
-            <motion.div
-              key={index}
-              variants={item}
-              className="group p-8 md:p-10 relative transition-all duration-300"
-              style={{
-                backgroundColor: 'rgba(26, 0, 51, 0.4)',
-                ...(project.borderSide === 'left' 
-                  ? { borderLeft: '4px solid var(--color-neon-cyan)' }
-                  : { borderRight: '4px solid var(--color-neon-magenta)' })
-              }}
-              onMouseEnter={(e) => {
-                e.currentTarget.style.backgroundColor = 'rgba(26, 0, 51, 0.7)'
-                if (project.borderSide === 'left') {
-                  e.currentTarget.style.transform = 'translateX(10px)'
-                } else {
-                  e.currentTarget.style.transform = 'translateX(-10px)'
-                }
-              }}
-              onMouseLeave={(e) => {
-                e.currentTarget.style.backgroundColor = 'rgba(26, 0, 51, 0.4)'
-                e.currentTarget.style.transform = 'translateX(0)'
-              }}
-            >
-              <div className="flex flex-col lg:flex-row justify-between items-start gap-4 mb-5">
-                <div className="flex-1">
-                  <h3 
-                    className="text-2xl md:text-3xl font-black mb-3"
-                    style={{
-                      fontFamily: 'var(--font-orbitron)',
-                      color: 'var(--color-neon-cyan)'
-                    }}
-                  >
-                    {project.title}
-                  </h3>
-                  
-                  <div className="flex flex-wrap gap-2 mb-3">
-                    {project.tech.map((tech, i) => (
-                      <span
-                        key={i}
-                        className="px-3 py-1 text-xs sm:text-sm rounded-sm"
-                        style={{
-                          backgroundColor: 'rgba(0, 255, 136, 0.1)',
-                          border: '1px solid var(--color-code-green)',
-                          color: 'var(--color-code-green)',
-                          fontFamily: 'var(--font-space)'
-                        }}
-                      >
-                        {tech}
-                      </span>
-                    ))}
-                  </div>
-                </div>
-                
-                {project.status && (
-                  <span 
-                    className="px-4 py-2 font-bold text-xs sm:text-sm uppercase tracking-wider whitespace-nowrap"
-                    style={{
-                      backgroundColor: `${project.statusColor}33`,
-                      border: `1px solid ${project.statusColor}`,
-                      color: project.statusColor
-                    }}
-                  >
-                    {project.status}
-                  </span>
-                )}
-              </div>
-
-              <p className="text-white/85 mb-5 text-sm sm:text-base leading-relaxed">
-                {project.description}
-              </p>
-
-              <ul className="space-y-3">
-                {project.highlights.map((highlight, i) => (
-                  <li key={i} className="flex items-start gap-3 text-white/80 text-sm sm:text-base leading-relaxed">
-                    <span 
-                      className="text-xl mt-0.5"
-                      style={{ color: 'var(--color-warning-orange)' }}
-                    >
-                      ⚡
-                    </span>
-                    <span dangerouslySetInnerHTML={{ __html: highlight }} />
-                  </li>
-                ))}
-              </ul>
-
-              {project.github && (
-                <a
-                  href={project.github}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 mt-5 transition-colors duration-300 text-sm"
-                  style={{
-                    fontFamily: 'var(--font-space)',
-                    color: 'var(--color-neon-cyan)'
-                  }}
-                  onMouseEnter={(e) => {
-                    e.currentTarget.style.color = 'var(--color-neon-magenta)'
-                  }}
-                  onMouseLeave={(e) => {
-                    e.currentTarget.style.color = 'var(--color-neon-cyan)'
-                  }}
-                >
-                  <span>View on GitHub</span>
-                  <span>→</span>
-                </a>
-              )}
-            </motion.div>
+        <div className="space-y-12 max-w-6xl mx-auto">
+          {projects.filter(p => p.featured).map((project, index) => (
+            <ProjectCard
+              key={project.id}
+              project={project}
+              index={index}
+              inView={inView}
+              isExpanded={expandedProject === project.id}
+              onToggle={() => setExpandedProject(expandedProject === project.id ? null : project.id)}
+            />
           ))}
+        </div>
+
+        {/* Additional projects */}
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={inView ? { opacity: 1 } : {}}
+          transition={{ duration: 0.6, delay: 0.6 }}
+          className="mt-20 text-center"
+        >
+          <h3 className="text-2xl font-bold mb-8 text-primary">More Projects</h3>
+          <div className="flex flex-wrap justify-center gap-4">
+            <a
+              href="https://github.com/Planet-Earth1234/youtuebe_song"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="px-6 py-3 card-glass rounded-lg hover:bg-primary/10 transition-colors"
+            >
+              📺 YouTube Downloader
+            </a>
+            <a
+              href="https://github.com/Planet-Earth1234/customer-churn"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="px-6 py-3 card-glass rounded-lg hover:bg-primary/10 transition-colors"
+            >
+              📊 Customer Churn Prediction
+            </a>
+            <a
+              href="https://github.com/Planet-Earth1234"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="px-6 py-3 bg-primary text-dark rounded-lg font-bold hover:bg-accent-dark transition-colors"
+            >
+              View All on GitHub →
+            </a>
+          </div>
         </motion.div>
       </div>
     </section>
+  )
+}
+
+function ProjectCard({ project, index, inView, isExpanded, onToggle }: any) {
+  return (
+    <motion.div
+      initial={{ opacity: 0, y: 50 }}
+      animate={inView ? { opacity: 1, y: 0 } : {}}
+      transition={{ duration: 0.6, delay: index * 0.15 }}
+      className="card-glass rounded-2xl overflow-hidden project-card"
+    >
+      <div className="p-8">
+        {/* Header */}
+        <div className="flex items-start justify-between mb-6">
+          <div className="flex-1">
+            <div className="text-sm font-mono text-primary mb-2">{project.status}</div>
+            <h3 className="text-3xl font-bold mb-2">{project.title}</h3>
+            <p className="text-xl text-gray-400 italic">{project.tagline}</p>
+          </div>
+        </div>
+
+        {/* Tech Stack */}
+        <div className="flex flex-wrap gap-2 mb-6">
+          {project.techStack.map((tech: string) => (
+            <span
+              key={tech}
+              className="px-3 py-1 text-sm bg-dark-lighter rounded-full text-primary border border-primary/30"
+            >
+              {tech}
+            </span>
+          ))}
+        </div>
+
+        {/* Problem Statement */}
+        <div className="mb-6">
+          <h4 className="text-lg font-bold text-primary mb-2">Problem Statement</h4>
+          <p className="text-gray-300 leading-relaxed">{project.problem}</p>
+        </div>
+
+        {/* Expandable Content */}
+        <motion.div
+          initial={false}
+          animate={{ height: isExpanded ? 'auto' : 0 }}
+          className="overflow-hidden"
+        >
+          {/* My Solution */}
+          <div className="mb-6">
+            <h4 className="text-lg font-bold text-primary mb-3">My Solution</h4>
+            <ul className="space-y-2">
+              {project.solution.map((item: string, i: number) => (
+                <li key={i} className="flex items-start gap-2 text-gray-300">
+                  <span className="text-primary mt-1">▸</span>
+                  <span>{item}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          {/* Challenges/Technical Details */}
+          <div className="mb-6">
+            <h4 className="text-lg font-bold text-primary mb-3">
+              {project.id === 2 ? 'Key Innovations' : 'Challenges Solved'}
+            </h4>
+            <ul className="space-y-2">
+              {project.challenges.map((item: string, i: number) => (
+                <li key={i} className="flex items-start gap-2 text-gray-300">
+                  <span className="text-primary mt-1">●</span>
+                  <span>{item}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          {/* Results */}
+          <div className="mb-6">
+            <h4 className="text-lg font-bold text-primary mb-3">
+              {project.id === 2 ? 'Research Contributions' : 'Results & Impact'}
+            </h4>
+            <div className="grid md:grid-cols-2 gap-4">
+              {project.results.map((result: string, i: number) => (
+                <div key={i} className="flex items-center gap-2 text-gray-300">
+                  <span className="text-green-500">✓</span>
+                  <span>{result}</span>
+                </div>
+              ))}
+            </div>
+          </div>
+        </motion.div>
+
+        {/* Actions */}
+        <div className="flex items-center gap-4 pt-4 border-t border-dark-lighter">
+          <button
+            onClick={onToggle}
+            className="text-primary hover:text-white transition-colors font-medium"
+          >
+            {isExpanded ? '↑ Show Less' : '↓ Read Full Case Study'}
+          </button>
+          {project.github && project.id !== 3 && (
+  <a
+    href={project.github}
+    target="_blank"
+    rel="noopener noreferrer"
+    className="px-4 py-2 bg-dark-lighter hover:bg-primary hover:text-dark rounded-lg transition-colors font-medium"
+  >
+    View on Github →
+  </a>
+)}
+          {project.id === 3 && (
+          <a
+            href={project.docker_Frontend
+            }
+            target="_blank"
+            rel="noopener noreferrer"
+            className="px-4 py-2 bg-dark-lighter hover:bg-primary hover:text-dark rounded-lg transition-colors font-medium"
+          >
+            View on Docker frontend →
+          </a>
+          )}
+          { project.id == 3 && (
+          <a href={project.docker_Backend}
+          target="_blank"
+            rel="noopener noreferrer"
+            className="px-4 py-2 bg-dark-lighter hover:bg-primary hover:text-dark rounded-lg transition-colors font-medium"
+          >
+            View on Docker backend →
+          </a>)
+}
+        </div>
+      </div>
+    </motion.div>
   )
 }
