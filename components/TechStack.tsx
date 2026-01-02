@@ -5,10 +5,10 @@ import { useInView } from 'react-intersection-observer'
 
 const techStack = {
   "AI & Machine Learning": [
-    "PyTorch", "TensorFlow", "Keras", "Scikit-Learn", "JAX"
+    "PyTorch", "TensorFlow", "Keras", "Scikit-Learn"
   ],
   "Computer Vision": [
-    "YOLO", "OpenCV", "Detectron2", "Albumentations", "DINO"
+    "YOLO", "OpenCV", "DINO","Pytesseract", "CNN", "OCR"
   ],
   "NLP & LLMs": [
     "HuggingFace", "Transformers", "LangChain", "OpenAI", "Anthropic"
@@ -20,7 +20,7 @@ const techStack = {
     "React", "Next.js", "React Native", "TypeScript", "TailwindCSS"
   ],
   "MLOps & Cloud": [
-    "Docker", "Kubernetes", "AWS", "MLflow", "GitHub Actions"
+    "Docker", "GitHub Actions", "Render"
   ],
   "Data Science": [
     "Pandas", "NumPy", "Matplotlib", "Seaborn", "Plotly"
