@@ -76,7 +76,7 @@ export default function Collaboration() {
 
             <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
               <a
-                href="mailto:your.email@example.com"
+                href="mailto:rahulgupta190310587044@gmail.com"
                 className="px-8 py-4 bg-primary text-dark font-bold rounded-lg hover:bg-accent-dark transition-all duration-300 hover:scale-105 hover:shadow-lg hover:shadow-primary/50 w-full sm:w-auto text-center"
               >
                 📧 Email Me
