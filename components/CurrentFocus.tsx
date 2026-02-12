@@ -5,25 +5,25 @@ import { useInView } from 'react-intersection-observer'
 
 const focusAreas = [
   {
-    title: "Autonomous AI Agents",
-    description: "Building agent frameworks that can plan, execute, and self-correct. Experimenting with function calling and RAG systems.",
-    status: "In Development",
+    title: "VeloxGate: Industrial Gate-OS",
+    description: "Architecting a 'Drive-Thru' system for manufacturing hubs. Integrating ULIP, FASTag, and Agentic AI to reduce gate TAT from 2 hours to 2 minutes.",
+    status: "Active Venture",
+    icon: "🏗️",
+    progress: 40
+  },
+  {
+    title: "Autonomous Agentic Workflows",
+    description: "Refining the 'Revenue Agent' architecture for high-friction web environments and automated payment orchestration via Razorpay Escrow.",
+    status: "R&D Phase",
     icon: "🤖",
-    progress: 75
-  },
-  {
-    title: "Production LLM Systems",
-    description: "Fine-tuning and deploying LLMs at scale. Focus on PEFT, LoRA, and efficient inference.",
-    status: "Research Phase",
-    icon: "🧠",
-    progress: 60
-  },
-  {
-    title: "MLOps Infrastructure",
-    description: "Building robust pipelines for model training, versioning, monitoring, and deployment.",
-    status: "Optimizing",
-    icon: "🚀",
     progress: 85
+  },
+  {
+    title: "Industrial-Grade CV Pipelines",
+    description: "Developing robust OCR and object detection for 'Messy Reality' data—oily bills, damaged packaging, and poor lighting conditions.",
+    status: "Optimizing",
+    icon: "👁️",
+    progress: 70
   }
 ]
 
@@ -46,7 +46,7 @@ export default function CurrentFocus() {
             <span className="text-gradient">What I'm Building Now</span>
           </h2>
           <p className="text-gray-400 text-lg max-w-2xl mx-auto">
-            Current projects and research areas I'm actively exploring
+            From stealth startup to production systems—building the infrastructure to eliminate the Manual Tax
           </p>
         </motion.div>
 

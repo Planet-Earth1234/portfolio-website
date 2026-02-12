@@ -4,12 +4,12 @@ import { motion } from 'framer-motion'
 import { useInView } from 'react-intersection-observer'
 
 const services = [
-  "AI/ML Consulting & Development",
-  "Full-Stack Application Development",
-  "Technical Architecture & System Design",
-  "Research Implementation & Production Deployment",
-  "Open Source Collaboration",
-  "Speaking & Mentoring"
+  "Co-Founder & Technical Leadership",
+  "Venture Capital & Seed Funding",
+  "Industrial Partnership & Pilot Programs",
+  "Agentic AI Strategy & Implementation",
+  "Computer Vision for Industrial Applications",
+  "Scaling 0-to-1 Products in Logistics"
 ]
 
 export default function Collaboration() {
@@ -29,10 +29,10 @@ export default function Collaboration() {
             className="text-center mb-12"
           >
             <h2 className="text-4xl md:text-5xl font-bold mb-4">
-              <span className="text-gradient">Let's Build Something Amazing</span>
+              <span className="text-gradient">Let's Build the Future of Trade</span>
             </h2>
             <p className="text-gray-400 text-lg">
-              I'm always open to discussing innovative projects and collaboration opportunities
+              Seeking ambitious co-founders and investors for VeloxGate. Let's solve the Manual Tax together.
             </p>
           </motion.div>
 
@@ -44,7 +44,7 @@ export default function Collaboration() {
             className="mb-12"
           >
             <h3 className="text-2xl font-bold text-center mb-8 text-primary">
-              Types of Work I Do
+              What I'm Looking For
             </h3>
             <div className="grid md:grid-cols-2 gap-4">
               {services.map((service, index) => (
@@ -71,7 +71,7 @@ export default function Collaboration() {
           >
             <div className="text-center mb-8">
               <h3 className="text-2xl font-bold mb-2">Get In Touch</h3>
-              <p className="text-gray-400">Usually respond within 24 hours ⚡</p>
+              <p className="text-gray-400">Open to serious inquiries about VeloxGate partnerships ⚡</p>
             </div>
 
             <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
@@ -107,38 +107,69 @@ export default function Collaboration() {
               className="mt-12 bg-dark-lighter rounded-lg p-6 overflow-x-auto"
             >
               <pre className="text-sm text-gray-300 font-mono">
-                <code>{`class CollaborationOpportunities:
-    """Let's build something revolutionary together!"""
+                <code>{`class VeloxGateVenture:
+    """Disrupting the $180B Manual Tax in Indian Logistics"""
     
     def __init__(self):
-        self.expertise = {
-            "ai_ml": ["Computer Vision", "NLP", "LLMs"],
-            "development": ["Full-Stack", "Mobile", "APIs"],
-            "consulting": ["AI Strategy", "Architecture"]
-        }
+        self.tech_stack = ["Agentic AI", "ULIP/FASTag", "Fintech Escrow"]
+        self.moat = "Family Commodity Trade Background + SOTA AI Engineering"
+        self.target = "70% reduction in Gate TAT (2hrs → 2min)"
+        self.market = "Mid-scale manufacturers (unorganized trade)"
     
-    def lets_collaborate(self, your_idea):
-        if your_idea.is_revolutionary():
-            return "Let's build the future together! 🚀"
-        else:
-            return "Let's make it revolutionary first! 💡"`}</code>
+    def join_the_mission(self, expertise):
+        """Looking for 'Wolf' partners who see what I see"""
+        if expertise in ["Logistics", "Sales", "Venture Capital"]:
+            return "Let's eliminate the Manual Tax together! 🚀"
+        elif expertise in ["AI/ML", "DevOps", "Industrial IoT"]:
+            return "Let's build the infrastructure! 🏗️"
+        return "Always looking for brilliant builders! 💡"
+    
+    def pitch_deck_request(self):
+        return "Private deck available under NDA for serious inquiries"`}</code>
               </pre>
             </motion.div>
           </motion.div>
 
-          {/* Social proof */}
+          {/* Value Proposition */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={inView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.6, delay: 0.6 }}
-            className="mt-12 text-center space-y-4"
+            className="mt-12 text-center space-y-6"
           >
-            <p className="text-gray-400">If you find my work interesting or useful:</p>
+            <div className="card-glass rounded-xl p-6">
+              <h4 className="text-xl font-bold text-primary mb-3">Why VeloxGate? Why Now?</h4>
+              <div className="grid md:grid-cols-3 gap-6 text-left">
+                <div>
+                  <div className="text-2xl mb-2">🎯</div>
+                  <h5 className="font-bold mb-1">The Spiky Insight</h5>
+                  <p className="text-sm text-gray-400">
+                    Grew up in commodity/farsan trade. I know the "Dual-Book" reality that keeps logistics stuck in cash + paper.
+                  </p>
+                </div>
+                <div>
+                  <div className="text-2xl mb-2">⚡</div>
+                  <h5 className="font-bold mb-1">The Tech Moat</h5>
+                  <p className="text-sm text-gray-400">
+                    Published AI researcher with production systems handling "Messy Reality" data—oily bills, damaged docs, trust gaps.
+                  </p>
+                </div>
+                <div>
+                  <div className="text-2xl mb-2">🚀</div>
+                  <h5 className="font-bold mb-1">The Market Timing</h5>
+                  <p className="text-sm text-gray-400">
+                    ULIP is live. FASTag is at 90%+. The regulatory stack is FINALLY ready for this solution.
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <p className="text-gray-400">If you're a 'Wolf' who sees the opportunity:</p>
             <div className="flex flex-wrap justify-center gap-4">
-              <span className="px-4 py-2 card-glass rounded-full text-sm">⭐ Star my repos</span>
-              <span className="px-4 py-2 card-glass rounded-full text-sm">🔱 Fork & contribute</span>
-              <span className="px-4 py-2 card-glass rounded-full text-sm">💬 Open issues</span>
-              <span className="px-4 py-2 card-glass rounded-full text-sm">🤝 Collaborate</span>
+              <span className="px-4 py-2 card-glass rounded-full text-sm">🤝 Co-founder partnerships</span>
+              <span className="px-4 py-2 card-glass rounded-full text-sm">💰 Seed investment</span>
+              <span className="px-4 py-2 card-glass rounded-full text-sm">🏭 Pilot programs</span>
+              <span className="px-4 py-2 card-glass rounded-full text-sm">🌏 Industrial partnerships</span>
             </div>
           </motion.div>
         </div>

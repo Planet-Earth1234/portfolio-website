@@ -4,10 +4,10 @@ import { motion } from 'framer-motion'
 import { useEffect, useState } from 'react'
 
 const typingPhrases = [
-  "I Turn AI Research Into Products That Scale",
-  "Building Intelligent Systems From First Principles",
-  "Where Cutting-Edge AI Meets Production Engineering",
-  "Transforming Complex Research Into Real-World Impact"
+  "Eliminating the $180B 'Manual Tax' in Logistics",
+  "Building the Operating System for Industrial Gates",
+  "Where Agentic AI Meets the Physical Supply Chain",
+  "Automating the 'Messy Reality' of B2B Trade"
 ]
 
 // Pre-generate particle data to avoid hydration mismatch
@@ -111,7 +111,7 @@ export default function Hero() {
             transition={{ duration: 0.8, delay: 0.4 }}
             className="text-lg md:text-xl text-gray-400 mb-12 max-w-3xl mx-auto"
           >
-            AI/ML Architect & Full-Stack Developer | Building intelligent systems from paper to production
+            Founder & AI Architect | Bridging the Digital-Physical Divide in Indian Logistics
           </motion.p>
 
           {/* CTA Button */}
@@ -124,7 +124,7 @@ export default function Hero() {
               href="#projects"
               className="inline-block px-8 py-4 bg-primary text-dark font-bold rounded-lg hover:bg-accent-dark transition-all duration-300 hover:scale-105 hover:shadow-lg hover:shadow-primary/50"
             >
-              See My Work
+              See The Vision
             </a>
           </motion.div>
 
@@ -142,12 +142,12 @@ export default function Hero() {
           >
             <div className="flex justify-center gap-8 text-sm text-gray-500">
               <div className="flex items-center gap-2">
-                <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse" />
-                <span>Available for work</span>
+                <div className="w-2 h-2 bg-primary rounded-full animate-pulse" />
+                <span>Building VeloxGate</span>
               </div>
               <div className="flex items-center gap-2">
-                <div className="w-2 h-2 bg-primary rounded-full animate-pulse" />
-                <span>Building the future</span>
+                <div className="w-2 h-2 bg-purple-500 rounded-full animate-pulse" />
+                <span>Seeking 'Wolf' Partners</span>
               </div>
             </div>
           </motion.div>

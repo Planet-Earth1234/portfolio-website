@@ -20,7 +20,7 @@ const techStack = {
     "React", "Next.js", "React Native", "TypeScript", "TailwindCSS"
   ],
   "MLOps & Cloud": [
-    "Docker", "GitHub Actions", "Render"
+    "Docker", "GitHub Actions", "Render", "vercel"
   ],
   "Data Science": [
     "Pandas", "NumPy", "Matplotlib", "Seaborn", "Plotly"
