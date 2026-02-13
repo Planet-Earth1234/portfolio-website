@@ -34,35 +34,6 @@ const projects = [
     github: "Private Repository", 
     linkText: "Request Access (NDA Required)",
     featured: true
-  }
-,
-  {
-    id: 1,
-    title: "AI Math Tutor",
-    tagline: "Autonomous AI Agent That Teaches Math",
-    status: "🟢 Production • 1000+ Users",
-    problem: "Students need instant help with math homework, but traditional OCR solutions can't understand context or provide step-by-step reasoning.",
-    solution: [
-      "Built multi-stage pipeline: YOLO detection → Advanced OCR → LLM reasoning",
-      "Designed agent framework that breaks down complex problems",
-      "Created intuitive interface for image upload and solution viewing",
-      "Deployed scalable API handling 100+ concurrent requests"
-    ],
-    techStack: ["YOLO v8", "PyTesseract", "GPT-4", "FastAPI", "Docker"],
-    challenges: [
-      "Handwriting recognition accuracy (achieved 94%)",
-      "Multi-problem detection in single image",
-      "Response time optimization (< 3 seconds end-to-end)"
-    ],
-    results: [
-      "94% accuracy on diverse handwriting styles",
-      "< 3 second response time",
-      "1000+ problems solved",
-      "4.8/5 user satisfaction rating"
-    ],
-    founderSignal: "Demonstrates YOLOv8 object detection and multi-stage OCR pipelines essential for real-time document extraction at industrial gates. The same architecture that processes handwritten math homework can extract bill data from oily, damaged documents in 'Messy Reality' logistics environments.",
-    github: "https://github.com/Planet-Earth1234/Ai_math_tutor",
-    featured: true
   },
   {
     id: 5,
@@ -243,7 +214,15 @@ function ProjectCard({ project, index, inView, isExpanded, onToggle }: any) {
         {/* Header */}
         <div className="flex items-start justify-between mb-6">
           <div className="flex-1">
-            <div className="text-sm font-mono text-primary mb-2">{project.status}</div>
+            <div className="flex items-center gap-3 mb-2">
+              <div className="text-sm font-mono text-primary">{project.status}</div>
+              {project.id === 4 && (
+                <div className="px-2 py-1 bg-purple-500/20 border border-purple-500/50 rounded text-xs font-mono text-purple-300 flex items-center gap-1">
+                  <span>🔒</span>
+                  <span>Proprietary Tech</span>
+                </div>
+              )}
+            </div>
             <h3 className="text-3xl font-bold mb-2">{project.title}</h3>
             <p className="text-xl text-gray-400 italic">{project.tagline}</p>
           </div>
@@ -335,7 +314,20 @@ function ProjectCard({ project, index, inView, isExpanded, onToggle }: any) {
           >
             {isExpanded ? '↑ Show Less' : '↓ Read Full Case Study'}
           </button>
-          {project.github && project.id !== 3 && (
+          
+          {/* Handle private repository with email request */}
+          {project.id === 4 && (
+            <a
+              href="mailto:rahulgupta190310587044@gmail.com?subject=VeloxGate%20Demo%20%2B%20Revenue%20Agent%20Access%20Request&body=Hi%20Rahul%2C%0A%0AI'm%20interested%20in%20learning%20more%20about%20VeloxGate%20and%20would%20like%20to%20request%20access%20to%20the%20Autonomous%20Job-Search%20Agent%20repository.%0A%0AMy%20background%3A%0A%0AReason%20for%20interest%3A%0A%0ABest%20regards"
+              className="px-4 py-2 bg-gradient-to-r from-primary/20 to-purple-500/20 border border-primary/50 hover:bg-primary hover:text-dark rounded-lg transition-all duration-300 font-medium flex items-center gap-2 group"
+            >
+              <span>🔒 Request Access</span>
+              <span className="text-xs opacity-75 group-hover:opacity-100">(NDA Available)</span>
+            </a>
+          )}
+          
+          {/* Regular GitHub links */}
+          {project.github && project.id !== 3 && project.id !== 4 && (
             <a
               href={project.github}
               target="_blank"
@@ -345,6 +337,8 @@ function ProjectCard({ project, index, inView, isExpanded, onToggle }: any) {
               View on GitHub →
             </a>
           )}
+          
+          {/* Docker Hub links for LaTeX Studio */}
           {project.id === 3 && (
             <>
               <a
